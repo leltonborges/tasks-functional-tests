@@ -6,13 +6,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TasksTest {
 
 	public WebDriver acceptApp() {
-		System.setProperty("webdriver.chrome.driver", "/opt/Selenium/chromedriver");
-		WebDriver driver = new ChromeDriver();
+//		System.setProperty("webdriver.chrome.driver", "/opt/Selenium/chromedriver");
+//		WebDriver driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.gecko.driver", "/opt/Selenium/geckodriver");
+		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
 
