@@ -15,7 +15,7 @@ public class TasksTest {
 //		System.setProperty("webdriver.chrome.driver", "/opt/Selenium/chromedriver");
 //		WebDriver driver = new ChromeDriver();
 		
-		System.setProperty("webdriver.gecko.driver", "/opt/Selenium/geckodriver");
+//		System.setProperty("webdriver.gecko.driver", "/opt/Selenium/geckodriver");
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
