@@ -1,31 +1,35 @@
 package br.ce.tasks.functional;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TasksTest {
 
-	public WebDriver acceptApp() {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-		WebDriver driver = new ChromeDriver();
-		
+	public WebDriver acceptApp() throws MalformedURLException {
+//		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+//		WebDriver driver = new ChromeDriver();
 //		System.setProperty("webdriver.gecko.driver", "/opt/selenium/geckodriver");
 //		WebDriver driver = new FirefoxDriver();
+		DesiredCapabilities cap = DesiredCapabilities.chrome();
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.67:4444/wd/hub"), cap);
+		driver.navigate().to("http://192.168.1.67:8081/tasks");
 		return driver;
 	}
 
 	@Test
-	public void shouldSaveSuccessTasks() {
+	public void shouldSaveSuccessTasks() throws MalformedURLException {
 		WebDriver driver = acceptApp();
 
 		try {
 			// Acesse
-			driver.navigate().to("http://localhost:8081/tasks");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			// Click button
 			driver.findElement(By.id("addTodo")).click();
@@ -50,12 +54,11 @@ public class TasksTest {
 	}
 
 	@Test
-	public void notShouldSaveSuccessTasksOutwithDate() {
+	public void notShouldSaveSuccessTasksOutwithDate() throws MalformedURLException {
 		WebDriver driver = acceptApp();
 
 		try {
 			// Acesse
-			driver.navigate().to("http://localhost:8081/tasks");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			// Click button
 			driver.findElement(By.id("addTodo")).click();
@@ -77,12 +80,11 @@ public class TasksTest {
 	}
 
 	@Test
-	public void notShouldSaveSuccessTasksOutwithMsg() {
+	public void notShouldSaveSuccessTasksOutwithMsg() throws MalformedURLException {
 		WebDriver driver = acceptApp();
 
 		try {
 			// Acesse
-			driver.navigate().to("http://localhost:8081/tasks");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			// Click button
 			driver.findElement(By.id("addTodo")).click();
@@ -105,12 +107,11 @@ public class TasksTest {
 
 	
 	@Test
-	public void shouldSaveSuccessTasksWithDateOld() {
+	public void shouldSaveSuccessTasksWithDateOld() throws MalformedURLException {
 		WebDriver driver = acceptApp();
 
 		try {
 			// Acesse
-			driver.navigate().to("http://localhost:8081/tasks");
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			// Click button
 			driver.findElement(By.id("addTodo")).click();
