@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TasksTest {
 
 	public WebDriver acceptApp() {
-		System.setProperty("webdriver.chrome.driver", "/opt/selenium/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		
 //		System.setProperty("webdriver.gecko.driver", "/opt/selenium/geckodriver");
