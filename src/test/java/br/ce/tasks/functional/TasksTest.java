@@ -20,7 +20,7 @@ public class TasksTest {
 //		WebDriver driver = new FirefoxDriver();
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.67:4444/wd/hub"), cap);
-		driver.navigate().to("http://192.168.1.67:8081/tasks");
+		driver.navigate().to("http://192.168.1.67:8085/tasks");
 		return driver;
 	}
 
