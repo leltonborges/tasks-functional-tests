@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -104,7 +105,6 @@ public class TasksTest {
 			driver.quit();
 		}
 	}
-
 	
 	@Test
 	public void shouldSaveSuccessTasksWithDateOld() throws MalformedURLException {
@@ -150,7 +150,10 @@ public class TasksTest {
 			// save
 			driver.findElement(By.id("saveButton")).click();
 			
-			driver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm'][text() = 'Remove']")).click();
+			driver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm']")).click();
+			WebElement findElement = driver.findElement(By.id("addTodo"));
+			Assert.assertEquals(findElement.getText(), "Add Todo"); 
+			
 		} finally {
 			// close browser
 			driver.quit();
